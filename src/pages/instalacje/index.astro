@@ -1,0 +1,30 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const services = [
+  { title: 'Centralne Ogrzewanie', href: '/instalacje/co', icon: '🔥', desc: 'Montaż instalacji CO, ogrzewania podłogowego i grzejników.' },
+  { title: 'Instalacje Wod-Kan', href: '/instalacje/wod-kan', icon: '💧', desc: 'Montaż, modernizacja i naprawa instalacji wodno-kanalizacyjnych.' },
+  { title: 'Instalacje Gazowe', href: '/instalacje/gazowe', icon: '🔵', desc: 'Montaż i przeglądy wewnętrznych instalacji gazowych.' },
+  { title: 'Kotłownie & Pompy Ciepła', href: '/instalacje/kotlownie', icon: '⚙️', desc: 'Montaż kotłowni gazowych, na paliwa stałe i pomp ciepła.' },
+  { title: 'Przyłącza Wody i Kanalizacji', href: '/instalacje/przylacza', icon: '🔧', desc: 'Nowe przyłącza wod-kan z nowoczesnych materiałów.' },
+  { title: 'Przeciski & Usługi Kopiarkami', href: '/instalacje/przeciski', icon: '🚜', desc: 'Bezwykopowe przeciski i wykopy własnym sprzętem JCB.' },
+  { title: 'Szamba & Oczyszczalnie', href: '/instalacje/szamba', icon: '🏗️', desc: 'Montaż szamb betonowych, plastikowych i oczyszczalni ścieków.' },
+  { title: 'Wentylacja & Rekuperacja', href: '/instalacje/wentylacja', icon: '💨', desc: 'Instalacje mechanicznej wymiany powietrza dla nowych i remontowanych budynków.' },
+];
+---
+
+<Layout title="Instalacje" description="Pełen zakres usług instalacyjnych – CO, wod-kan, gazowe, kotłownie, przyłącza, przeciski, szamba i wentylacja.">
+  <div class="max-w-6xl mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold mb-4">Instalacje</h1>
+    <p class="text-gray-500 mb-12 max-w-2xl">Oferujemy kompleksowe usługi instalacyjne dla klientów indywidualnych i firm – zarówno w nowych budynkach, jak i podczas remontów.</p>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((s) => (
+        <a href={s.href} class="group border border-gray-200 rounded-2xl p-7 hover:border-[#16a34a] hover:shadow-lg transition-all">
+          <div class="text-4xl mb-4">{s.icon}</div>
+          <h2 class="font-bold text-xl mb-2 group-hover:text-[#16a34a] transition-colors">{s.title}</h2>
+          <p class="text-sm text-gray-500">{s.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

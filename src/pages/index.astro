@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    title: 'Centralne Ogrzewanie',
+    desc: 'Montaż instalacji CO, ogrzewania podłogowego i grzejników w nowych i remontowanych budynkach.',
+    href: '/instalacje/co',
+    // thermometer — instantly reads as "heating"
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>`,
+  },
+  {
+    title: 'Instalacje Wod-Kan',
+    desc: 'Montaż, modernizacja i naprawa instalacji wod-kan. Udrażnianie kanalizacji i podłączanie urządzeń sanitarnych.',
+    href: '/instalacje/wod-kan',
+    // droplets — two water drops, clearly "water/plumbing"
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/><path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/></svg>`,
+  },
+  {
+    title: 'Instalacje Gazowe',
+    desc: 'Montaż wewnętrznych instalacji gazowych, podłączanie kotłów i kuchenek, próby szczelności.',
+    href: '/instalacje/gazowe',
+    // flame — universal "gas / fire" symbol
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>`,
+  },
+  {
+    title: 'Kotłownie & Pompy Ciepła',
+    desc: 'Montaż i modernizacja kotłowni gazowych i na paliwa stałe. Instalacja pomp ciepła.',
+    href: '/instalacje/kotlownie',
+    // zap (lightning bolt) — energy, power, heat pump
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  },
+  {
+    title: 'Przyłącza Wody i Kanalizacji',
+    desc: 'Realizacja przyłączy wod-kan z nowoczesnych materiałów dla nowych i remontowanych budynków.',
+    href: '/instalacje/przylacza',
+    // link-2 — a chain link = "connection / przyłącze"
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 17H7A5 5 0 0 1 7 7h2"/><path d="M15 7h2a5 5 0 1 1 0 10h-2"/><line x1="11" y1="12" x2="13" y2="12"/></svg>`,
+  },
+  {
+    title: 'Przeciski & Kopiarki',
+    desc: 'Bezwykopowe przeciski pod jezdniami i chodnikami. Własny sprzęt JCB i CompAir Hercu.',
+    href: '/instalacje/przeciski',
+    // shovel — digging, excavation
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22v-5l5-5 5 5-5 5z"/><path d="M9.5 14.5 16 8"/><path d="M17 2l5 5-.5.5a3.53 3.53 0 0 1-5 0 3.53 3.53 0 0 1 0-5Z"/></svg>`,
+  },
+  {
+    title: 'Szamba & Oczyszczalnie',
+    desc: 'Montaż szamb betonowych i plastikowych, przydomowych oczyszczalni i systemów odwodnienia.',
+    href: '/instalacje/szamba',
+    // layers — stacked earth layers = underground / septic
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+  },
+  {
+    title: 'Wentylacja & Rekuperacja',
+    desc: 'Instalacje mechanicznej wymiany powietrza z odzyskiem ciepła dla nowych i remontowanych budynków.',
+    href: '/instalacje/wentylacja',
+    // wind — flowing air lines, universally understood as ventilation
+    svg: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>`,
+  },
+];
+
+const stats = [
+  { value: '10+', label: 'lat doświadczenia' },
+  { value: '500+', label: 'zrealizowanych projektów' },
+  { value: '100%', label: 'zadowolonych klientów' },
+  { value: '24h', label: 'czas reakcji' },
+];
+
+const steps = [
+  { n: '01', title: 'Kontakt i wycena', desc: 'Zadzwoń lub napisz. Bezpłatnie wycenimy zakres prac i doradzimy najlepsze rozwiązanie.' },
+  { n: '02', title: 'Realizacja', desc: 'Pracujemy sprawnie, terminowo, z własnym sprzętem. Minimalizujemy uciążliwości dla mieszkańców.' },
+  { n: '03', title: 'Odbiór i gwarancja', desc: 'Przekazujemy kompletną dokumentację techniczną i obejmujemy wykonane prace gwarancją.' },
+];
+---
+
+<Layout title="Strona Główna">
+
+  <!-- ======================== HERO ======================== -->
+  <section class="relative overflow-hidden bg-slate-900 text-white">
+    <!-- Background pattern -->
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 32px 32px;"></div>
+    <!-- Gradient accent -->
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-[#16a34a]/20 to-transparent pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-[#f97316]/10 rounded-full blur-3xl pointer-events-none -translate-x-1/2 translate-y-1/2"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 md:px-10 py-28 md:py-40">
+      <div class="max-w-3xl">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-green-300 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+          Profesjonalne Instalacje
+        </div>
+
+        <h1 class="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight mb-7">
+          Instalacje dla<br/>
+          <span class="text-[#f97316]">Twojego domu</span><br/>
+          i firmy
+        </h1>
+
+        <p class="text-lg md:text-xl text-slate-300 max-w-xl leading-relaxed mb-10">
+          Kompleksowe usługi instalacyjne — CO, wod-kan, gazowe, kotłownie i więcej. Własny sprzęt, doświadczony zespół, gwarancja na każdą realizację.
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <a href="/kontakt" class="inline-flex items-center gap-2 bg-[#f97316] hover:bg-[#ea580c] text-white font-bold px-8 py-4 rounded-xl transition-colors shadow-lg shadow-orange-900/30 text-base">
+            Darmowa wycena
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="tel:+48000000000" class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 border border-white/20 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-base">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.64 4.9 2 2 0 0 1 3.62 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Zadzwoń teraz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== STATS ======================== -->
+  <section class="bg-[#16a34a]">
+    <div class="max-w-7xl mx-auto px-5 md:px-10 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-white">
+      {stats.map(s => (
+        <div class="text-center">
+          <p class="text-4xl md:text-5xl font-black mb-1">{s.value}</p>
+          <p class="text-green-100 text-sm font-medium">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ======================== SERVICES ======================== -->
+  <section class="max-w-7xl mx-auto px-5 md:px-10 py-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+      <div>
+        <p class="text-[#16a34a] text-sm font-bold uppercase tracking-widest mb-3">Czym się zajmujemy</p>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">Nasze usługi</h2>
+      </div>
+      <a href="/instalacje" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-[#16a34a] transition-colors shrink-0">
+        Zobacz wszystkie
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {services.map((s) => (
+        <a
+          href={s.href}
+          class="group flex flex-col gap-4 p-6 rounded-2xl border border-slate-200 hover:border-[#16a34a] hover:shadow-xl hover:shadow-green-100/60 hover:-translate-y-1 transition-all duration-200 bg-white"
+        >
+          <span class="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-slate-100 group-hover:bg-[#16a34a] group-hover:text-white text-slate-600 transition-colors">
+            <Fragment set:html={s.svg} />
+          </span>
+          <div class="flex-1">
+            <h3 class="font-bold text-base mb-1.5 text-slate-900 group-hover:text-[#16a34a] transition-colors">{s.title}</h3>
+            <p class="text-sm text-slate-500 leading-relaxed">{s.desc}</p>
+          </div>
+          <span class="inline-flex items-center gap-1 text-xs font-semibold text-[#16a34a] opacity-0 group-hover:opacity-100 transition-opacity">
+            Dowiedz się więcej
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ======================== HOW WE WORK ======================== -->
+  <section class="bg-slate-50 py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-10">
+      <div class="max-w-xl mb-16">
+        <p class="text-[#16a34a] text-sm font-bold uppercase tracking-widest mb-3">Jak działamy</p>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight">Prosty proces od A do Z</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        {steps.map((step) => (
+          <div class="relative bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+            <span class="inline-block text-6xl font-black text-slate-100 leading-none mb-4 select-none">{step.n}</span>
+            <h3 class="font-bold text-xl mb-3 text-slate-900">{step.title}</h3>
+            <p class="text-slate-500 leading-relaxed">{step.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== WHY US ======================== -->
+  <section class="max-w-7xl mx-auto px-5 md:px-10 py-24">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-[#f97316] text-sm font-bold uppercase tracking-widest mb-3">Dlaczego my?</p>
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight leading-tight mb-8">
+          Kompleksowo.<br/>Terminowo.<br/>Z gwarancją.
+        </h2>
+        <ul class="space-y-5">
+          {[
+            { t: 'Własny sprzęt i transport', d: 'Dysponujemy mini koparką, koparko-ładowarką JCB i urządzeniem CompAir Hercu do przecisków.' },
+            { t: 'Doświadczony zespół', d: 'Ponad 10 lat doświadczenia w instalacjach dla klientów indywidualnych i firm.' },
+            { t: 'Pełna dokumentacja', d: 'Przekazujemy kompletną dokumentację techniczną i przeprowadzamy odbiory.' },
+            { t: 'Gwarancja na wykonanie', d: 'Każda realizacja objęta jest gwarancją. Jesteśmy dostępni po zakończeniu prac.' },
+          ].map(item => (
+            <li class="flex items-start gap-4">
+              <span class="flex items-center justify-center w-6 h-6 rounded-full bg-[#16a34a] text-white shrink-0 mt-0.5">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <div>
+                <p class="font-bold text-slate-900">{item.t}</p>
+                <p class="text-sm text-slate-500 mt-0.5">{item.d}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <!-- Visual accent block -->
+      <div class="relative hidden md:block">
+        <div class="bg-slate-900 rounded-3xl p-10 text-white relative overflow-hidden h-96">
+          <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle, #fff 1px, transparent 1px); background-size: 24px 24px;"></div>
+          <div class="absolute bottom-0 right-0 w-64 h-64 bg-[#16a34a]/30 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="relative z-10 flex flex-col justify-between h-full">
+            <div class="text-6xl font-black text-[#f97316]">500+</div>
+            <div>
+              <p class="text-3xl font-black mb-2">zrealizowanych projektów</p>
+              <p class="text-slate-400 text-sm">na terenie całego regionu — od instalacji CO po bezwykopowe przeciski</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== CTA BANNER ======================== -->
+  <section class="bg-[#f97316] py-20">
+    <div class="max-w-7xl mx-auto px-5 md:px-10 flex flex-col md:flex-row items-center justify-between gap-8">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-black text-white leading-tight mb-2">
+          Potrzebujesz wyceny?
+        </h2>
+        <p class="text-orange-100 text-lg">Odpowiadamy w ciągu 24 godzin. Bezpłatne doradztwo techniczne.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a href="tel:+48000000000" class="inline-flex items-center justify-center gap-2 bg-white text-[#f97316] font-bold px-8 py-4 rounded-xl transition-colors hover:bg-orange-50 whitespace-nowrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.64 4.9 2 2 0 0 1 3.62 2.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          Zadzwoń teraz
+        </a>
+        <a href="/kontakt" class="inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 border border-white/30 text-white font-bold px-8 py-4 rounded-xl transition-colors whitespace-nowrap">
+          Napisz do nas
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
