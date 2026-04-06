@@ -24,6 +24,63 @@ const nav = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="canonical" href={`https://newinstall.pl${Astro.url.pathname}`} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:site_name" content="New Install" />
+    <meta property="og:title" content={`${title} | New Install`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={`https://newinstall.pl${Astro.url.pathname}`} />
+
+    <!-- JSON-LD LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "New Install Wojciech Bezpalko",
+        "url": "https://newinstall.pl",
+        "telephone": "+48509679175",
+        "email": "hydraulikpl@wp.pl",
+        "description": "Profesjonalne instalacje CO, wodno-kanalizacyjne, gazowe, kotłownie, pompy ciepła, przyłącza, przeciski i wentylacja. Puławy i okolice.",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Szubartowskiego 20",
+          "addressLocality": "Puławy",
+          "postalCode": "24-100",
+          "addressRegion": "lubelskie",
+          "addressCountry": "PL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 51.40851,
+          "longitude": 22.00743
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Puławy" },
+          { "@type": "AdministrativeArea", "name": "powiat puławski" },
+          { "@type": "AdministrativeArea", "name": "województwo lubelskie" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Usługi instalacyjne",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalacje Centralnego Ogrzewania" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalacje Wodno-Kanalizacyjne" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalacje Gazowe" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Kotłownie i Pompy Ciepła" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Przyłącza Wody i Kanalizacji" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Przeciski i Usługi Kopiarkami" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Szamba i Oczyszczalnie Ścieków" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wentylacja i Rekuperacja" } }
+          ]
+        }
+      }
+    </script>
+
     <title>{title} | New Install</title>
   </head>
   <body class="bg-white text-slate-800 antialiased" style="font-family: 'Inter', system-ui, sans-serif;">
@@ -169,12 +226,20 @@ const nav = [
                   hydraulikpl@wp.pl
                 </a>
               </li>
+              <li class="flex items-center gap-2 text-slate-400">
+                <span class="flex items-center justify-center w-8 h-8 rounded-lg bg-slate-800 shrink-0">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                  </svg>
+                </span>
+                ul. Szubartowskiego 20<br/>24-100 Puławy
+              </li>
             </ul>
           </div>
         </div>
 
         <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} New Install. Wszelkie prawa zastrzeżone.</p>
+          <p>© {new Date().getFullYear()} New Install Wojciech Bezpalko. Wszelkie prawa zastrzeżone.</p>
           <p>new-install.pl</p>
         </div>
       </div>

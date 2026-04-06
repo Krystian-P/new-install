@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://newinstall.pl/sitemap.xml
